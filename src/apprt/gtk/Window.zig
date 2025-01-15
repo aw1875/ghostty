@@ -641,7 +641,7 @@ fn gtkWindowNotifyMaximized(
     const self = userdataSelf(ud orelse return);
     const maximized = c.gtk_window_is_maximized(self.window) != 0;
     if (!maximized) {
-        self.headerbar.setVisible(true);
+        self.headerbar.setVisible(self.app.config.@"gtk-titlebar");
         return;
     }
     if (self.app.config.@"gtk-titlebar-hide-when-maximized") {
